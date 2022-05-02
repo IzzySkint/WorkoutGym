@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/bootstrap": "^5.1.10",
+    "@types/datatables.net": "^1.10.21",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^17.0.29"
+  },
+  "dependencies": {
+    "@types/bootstrap-datepicker": "^0.0.15"
+  }
+}

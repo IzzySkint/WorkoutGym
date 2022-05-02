@@ -1,0 +1,25 @@
+{
+  "compilerOptions":{
+    "target":"es6",
+    "moduleResolution": "Node",
+    "sourceMap":true,
+    "noImplicitAny":false,
+    "noEmitOnError": true,
+    "declaration": false,
+    "importsNotUsedAsValues": "remove",
+    "outDir":"wwwroot/js/",
+    "baseUrl":".",
+    "paths": {
+      "*": ["./wwwroot/typescript/*"],
+      "node/*": ["./node_modules/*"]
+    }
+  },
+  "include":[
+    "wwwroot/typescript/typings/*.d.ts",
+    "wwwroot/typescript/**/*"
+  ],
+  "exclude":[
+    "node_modules"
+  ],
+  "compileOnSave":true
+}

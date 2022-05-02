@@ -1,0 +1,23 @@
+@using Microsoft.AspNetCore.Identity
+@using WorkoutGym.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+            </li>
+        </ul>
+    }
+    else if (User.IsInRole("Member"))
+    {
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Dashboard">Dashboard</a>
+            </li>
+        </ul>
+    }
+}

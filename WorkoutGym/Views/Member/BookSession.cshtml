@@ -1,0 +1,103 @@
+@using WorkoutGym.Extensions
+<h1>Book Session</h1>
+<div data-js="book-session">
+    <div class="row">
+        <div class="col-sm-9">
+            <input id="userId" type="hidden" value="@User.GetUserId()"/>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Show Sessions For</label>
+                <div class="col-sm-3">
+                    <select id="memberSessionsFilter" class="form-select">
+                        <option value="1">Current Day</option>
+                        <option value="2">Current Month</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button id="newSession" type="button" class="btn btn-primary">New Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="memberSessions" class="table">
+                        <thead>
+                        <tr>
+                            <td>SessionId</td>
+                            <td>Date</td>
+                            <td>Area</td>
+                            <td>Start Time</td>
+                            <td>End Time</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+    <div id="newSessionModal" class="modal" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Session</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="row mb-4">
+                            <div id="validationMessage" class="col-sm-12"></div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row mb-4">
+                                <label class="col-form-label col-sm-5">Date</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input id="sessionDate" type="text" class="form-control" placeholder="Pick a date" autocomplete="off" />
+                                        <div class="input-group-append">
+                                            <button id="showCalendarButton" type="button" class="btn btn-outline-secondary"><i class="fa fa-calendar"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label for="workoutAreas" class="col-form-label col-sm-5">Workout Area</label>
+                                <div class="col-sm-7">
+                                    <select id="workoutAreas" class="form-select"></select>
+                                </div>
+                            </div>
+                            <div id="sessionsContainer" class="row mb-3">
+                                <label for="workoutSessions" class="col-form-label col-sm-5">Workout Session</label>
+                                <div class="col-sm-7">
+                                    <select id="workoutSessions"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="createSessionButton" type="button" class="btn btn-primary" disabled>Create Session</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/lib/datatables/datatables.min.css" />
+}
+@section Scripts
+{
+    <script type="importmap">
+        {
+            "imports": {
+                "services/MemberService": "../js/services/MemberService.js"
+            }
+        }
+    </script>
+    <script type="module" src="~/js/services/MemberService.js"></script>
+    <script type="module" src="~/js/views/BookSessionView.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/datatables.min.js"></script>
+}

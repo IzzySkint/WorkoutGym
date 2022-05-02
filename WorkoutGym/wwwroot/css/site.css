@@ -1,0 +1,29 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.welcome{
+  height: 408px;
+  background-repeat: no-repeat;
+  color: #000000;
+  background-image: url("../images/danielle-cerullo-CQfNt66ttZM-unsplash.jpg");
+}
+
+.hidden{
+  display: none;
+}

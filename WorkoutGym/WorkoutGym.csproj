@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-WorkoutGym-C0619FB1-C636-47A9-8CF0-9683EA2EC657</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+        <None Include="wwwroot\typescript\Common.ts" />
+        <None Include="wwwroot\typescript\typings\extensions.d.ts" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\images" />
+      <Folder Include="wwwroot\js\services" />
+      <Folder Include="wwwroot\lib\bootstrap-datepicker" />
+      <Folder Include="wwwroot\lib\fontawesome" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <TypeScriptCompile Include="wwwroot\typescript\services\AdminService.ts" />
+      <TypeScriptCompile Include="wwwroot\typescript\services\MemberService.ts" />
+      <TypeScriptCompile Include="wwwroot\typescript\typings\workoutgym.d.ts" />
+      <TypeScriptCompile Include="wwwroot\typescript\views\BookSessionView.ts" />
+      <TypeScriptCompile Include="wwwroot\typescript\views\ViewSessionsView.ts" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\js\services\MemberService.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\services\MemberService.js.map" />
+    </ItemGroup>
+
+</Project>

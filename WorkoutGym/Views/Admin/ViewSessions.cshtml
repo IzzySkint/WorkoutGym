@@ -1,0 +1,56 @@
+<h1>View Sessions</h1>
+<div data-js="view-sessions">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Show Sessions For</label>
+                <div class="col-sm-3">
+                    <select id="memberSessionsFilter" class="form-select">
+                        <option value="1">Current Day</option>
+                        <option value="2">Current Month</option>
+                    </select>
+                </div>
+                <div id="downloadTimeTable" class="col-sm-3 hidden">
+                    <a id="newSession" asp-action="DownloadDailyTimeTable" asp-controller="Admin" class="btn btn-primary">Download Time Table</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="memberSessions" class="table">
+                <thead>
+                <tr>
+                    <td>SessionId</td>
+                    <td>Date</td>
+                    <td>Member</td>
+                    <td>Email</td>
+                    <td>Area</td>
+                    <td>Start Time</td>
+                    <td>End Time</td>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/lib/datatables/datatables.min.css" />
+}
+@section Scripts
+{
+    <script type="importmap">
+        {
+            "imports": {
+                "services/AdminService": "../js/services/AdminService.js"
+            }
+        }
+    </script>
+    <script type="module" src="~/js/services/AdminService.js"></script>
+    <script type="module" src="~/js/views/ViewSessionsView.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/datatables.min.js"></script>
+}

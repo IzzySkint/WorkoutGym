@@ -1,0 +1,32 @@
+## Overview
+
+1. Project built in Jetbrains Rider on an Apple Mac.
+2. Project can be built in Visual Studio and run.
+3. The example database is Sqlite, but can be ported to SQL Server.
+4. Due to time constraints the other login mechanism was not implemented.
+5. Due to lack of email provider full registration process was not implemented. Tried to get a SendGrid
+   account, but was refused.
+6. A registration process for Admin users needs to be implemented.
+7. The styling of the project could be improved.
+
+## Features implemented
+
+1.  One can register as a member by clicking on the "Register" option on the menu.
+2.  One can log into the account with the following created accounts:
+    Admin:
+    User Name: admin@workoutgym.co.za
+    Password: P@ssw0rd123
+    Members:
+    User Name: test.user@gmail.com
+    Password: P@ssw0rd123
+
+        User Name: test.user2@gmail.com
+        Password: P@ssw0rd123
+
+3.  Once logged in an Admin/Member will be shown there relevant dashboard.
+4.  An Admin can view sessions of all user and download a daily time table.
+5.  Members can book sessions.
+
+## Time taken
+
+Due to study commitments the project took longer than expected. In total the project took 3 x 8 = 24 hours.
