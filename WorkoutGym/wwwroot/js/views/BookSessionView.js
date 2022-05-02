@@ -17,6 +17,10 @@ export class BookSessionView {
         this.$sessionsContainer = this.$container.find("#sessionsContainer");
         this.$sessionsContainer.hide();
         this.$newSession = this.$container.find("#newSession");
+        this.$loader = $(this.$container[0]).waitMe({
+            effect: "bounce",
+            bg: "rgb(255,255,255,0.7)"
+        });
         this.userId = this.$container.find("#userId").val();
         this.$sessionModal = this.$container.find("#newSessionModal");
         this.$validationMessage = this.$container.find("#validationMessage");
@@ -138,11 +142,13 @@ export class BookSessionView {
     loadMemberSessions() {
         let filter = this.$memberSessionsFilter.val();
         this.dataTable.clear();
+        this.$loader.waitMe("show");
         if (filter === "1") {
             this.service.getMemberSessionsByDate(this.userId, $.currentDate())
                 .then((data) => {
                 this.dataTable.rows.add(data);
                 this.dataTable.draw();
+                this.$loader.waitMe("hide");
             })
                 .catch((error) => {
                 console.log(error);
@@ -153,6 +159,7 @@ export class BookSessionView {
                 .then((data) => {
                 this.dataTable.rows.add(data);
                 this.dataTable.draw();
+                this.$loader.waitMe("hide");
             }).catch((error) => {
                 console.log(error);
             });

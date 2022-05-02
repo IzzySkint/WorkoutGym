@@ -16,6 +16,7 @@ export class BookSessionView{
     private $createSessionButton: JQuery;
     private $showCalendarButton: JQuery;
     private $sessionModal: JQuery;
+    private $loader: JQuery;
     private $memberSessionsFilter: JQuery;
     private dataTable: DataTables.Api;
     private $sessionDate: JQuery;
@@ -42,6 +43,10 @@ export class BookSessionView{
         this.$sessionsContainer = this.$container.find("#sessionsContainer");
         this.$sessionsContainer.hide();
         this.$newSession = this.$container.find("#newSession");
+        this.$loader = $(this.$container[0]).waitMe({
+            effect: "bounce",
+            bg: "rgb(255,255,255,0.7)"
+        });
         this.userId = <string>this.$container.find("#userId").val();
         this.$sessionModal = this.$container.find("#newSessionModal");
         this.$validationMessage = this.$container.find("#validationMessage");
@@ -191,6 +196,7 @@ export class BookSessionView{
         
         let filter = this.$memberSessionsFilter.val();
         this.dataTable.clear();
+        this.$loader.waitMe("show");
         
         if (filter === "1"){
             
@@ -198,6 +204,7 @@ export class BookSessionView{
                 .then((data) =>{
                     this.dataTable.rows.add(data);
                     this.dataTable.draw();
+                    this.$loader.waitMe("hide");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -209,6 +216,7 @@ export class BookSessionView{
                 .then((data) => {
                     this.dataTable.rows.add(data);
                     this.dataTable.draw();
+                    this.$loader.waitMe("hide");
                 }).catch((error) => {
                     console.log(error);
             });

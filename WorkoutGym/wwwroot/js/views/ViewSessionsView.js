@@ -11,6 +11,10 @@ export class ViewSessionsView {
         this.$memberSessionsFilter = this.$container.find("#memberSessionsFilter");
         this.$downloadTimeTable = this.$container.find("#downloadTimeTable");
         this.$downloadTimeTable.hide();
+        this.$loader = $(this.$container[0]).waitMe({
+            effect: "bounce",
+            bg: "rgb(255,255,255,0.7)"
+        });
         this.dataTable = this.$container.find("#memberSessions").DataTable({
             pageLength: 10,
             columnDefs: [
@@ -35,12 +39,14 @@ export class ViewSessionsView {
     loadMemberSessions() {
         let filter = this.$memberSessionsFilter.val();
         this.dataTable.clear();
+        this.$loader.waitMe("show");
         if (filter === "1") {
             this.$downloadTimeTable.show();
             this.service.getMemberSessionsByDate($.currentDate())
                 .then((data) => {
                 this.dataTable.rows.add(data);
                 this.dataTable.draw();
+                this.$loader.waitMe("hide");
             })
                 .catch((error) => {
                 console.log(error);
@@ -52,6 +58,7 @@ export class ViewSessionsView {
                 .then((data) => {
                 this.dataTable.rows.add(data);
                 this.dataTable.draw();
+                this.$loader.waitMe("hide");
             }).catch((error) => {
                 console.log(error);
             });

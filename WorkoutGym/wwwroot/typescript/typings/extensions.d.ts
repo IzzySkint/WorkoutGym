@@ -4,6 +4,7 @@ interface JQuery{
     currentDate(): Date;
     startCurrentMonthDate(): Date;
     endCurrentMonthDate(): Date;
+    waitMe(options: any): JQuery;
 }
 
 interface HTMLElement{
